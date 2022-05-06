@@ -201,10 +201,28 @@ class BaseData(AbstractBaseClass):
             else:
                 format_dict[this_format][key] = val
 
+    @staticmethod
+    def _dict_python_object():
+        """ "Return the format_dict with only "python_object"."""
+        format_dict = {"python_object": {}}
+        format = format_dict["python_object"]
+        format[
+            "description"
+        ] = "Mapping the attributes of a python object to a reference variable dictionary"
+        format["ext"] = ""
+        format["format_class"] = dict
+        format["read_kwargs"] = [""]
+        format["write_kwargs"] = [""]
+        return format_dict
+
     @classmethod
     @abstractmethod
     def supported_formats(self):
-        format_dict = {}
+        """Return the dictionary of supported formats. It's designed as a `classmethod` so that this method
+        can be called without initialization. It's set as an abstract method to remind the developers to add format
+        information to the list."""
+        # python_object type is initialized by default
+        format_dict = self._init_format_dict()
         # Add the supported format classes when creating a concrete class.
         # See the example at `tests/BaseDataTest.py`
         self._add_ioformat(format_dict, FormatClass)

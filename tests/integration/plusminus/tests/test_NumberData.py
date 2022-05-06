@@ -9,6 +9,7 @@ from plusminus.NumberData import NumberData, TXTFormat, H5Format
 def test_construct_NumberData():
     """Test the construction of NumberData"""
     my_data = NumberData.from_dict({"number": 1}, "input1")
+    assert isinstance(my_data, NumberData)
 
 
 def test_list_formats():

@@ -15,26 +15,26 @@ class BaseFormat(AbstractBaseClass):
     def format_register(self):
         # Override this `format_register` method in a concrete format class.
         key = "Base"
-        desciption = "Base data format"
+        description = "Base data format"
         file_extension = "base"
         read_kwargs = [""]
         write_kwargs = [""]
         return self._create_format_register(
-            key, desciption, file_extension, read_kwargs, write_kwargs
+            key, description, file_extension, read_kwargs, write_kwargs
         )
 
     @classmethod
     def _create_format_register(
         cls,
         key: str,
-        desciption: str,
+        description: str,
         file_extension: str,
         read_kwargs=[""],
         write_kwargs=[""],
     ):
         format_register = {
             "key": key,  # FORMAT KEY
-            "description": desciption,  # FORMAT DESCRIPTION
+            "description": description,  # FORMAT DESCRIPTION
             "ext": file_extension,  # FORMAT EXTENSION
             "format_class": cls,  # CLASS NAME OF THE FORMAT
             "read_kwargs": read_kwargs,  # KEYWORDS LIST NEEDED TO READ
